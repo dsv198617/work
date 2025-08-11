@@ -1,0 +1,41 @@
+interface Tunnel7
+ description =DMVPN-CLOUD-1=
+ ip address {tunnel-ip} 255.255.255.224
+ no ip redirects
+ ip mtu 1400
+ ip hello-interval eigrp 1 3
+ ip hold-time eigrp 1 9
+ ip nhrp authentication FxDm22!!
+ ip nhrp map 172.29.7.30 149.11.64.86
+ ip nhrp map multicast 149.11.64.86
+ ip nhrp network-id 100007
+ ip nhrp holdtime 300
+ ip nhrp nhs 172.29.7.30
+ ip tcp adjust-mss 1360
+ delay 800
+ tunnel source {WAN-interface}
+ tunnel mode gre multipoint
+ tunnel key 100007
+ tunnel protection ipsec profile DMVPN shared
+end
+!
+interface Tunnel8
+ description =DMVPN-CLOUD-2=
+ ip address {tunnel-ip} 255.255.255.224
+ no ip redirects
+ ip mtu 1400
+ ip hello-interval eigrp 1 3
+ ip hold-time eigrp 1 9
+ ip nhrp authentication FxDm22!!
+ ip nhrp map 172.29.8.30 212.72.42.190
+ ip nhrp map multicast 212.72.42.190
+ ip nhrp network-id 100008
+ ip nhrp holdtime 300
+ ip nhrp nhs 172.29.8.30
+ ip tcp adjust-mss 1360
+ delay 1500
+ tunnel source {WAN-interface}
+ tunnel mode gre multipoint
+ tunnel key 100008
+ tunnel protection ipsec profile DMVPN shared
+end
