@@ -1,0 +1,4 @@
+conf t
+license boot level network-essentials addon dna-essentials 
+do write
+do reload
