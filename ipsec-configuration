@@ -1,0 +1,23 @@
+#3des, esp-3des, group 2 require Cisco IOS XE Software, Version 17.09.05f, higher versions do not support
+crypto isakmp policy 5
+ encryption aes
+ hash sha
+ authentication pre-share
+ group 2          
+ lifetime 86400
+crypto isakmp policy 10
+ encryption 3des  
+ hash sha
+ authentication pre-share
+ group 2         
+ lifetime 86400
+!
+crypto isakmp key Fx011DmVpNPh0x!$ address 0.0.0.0  
+!
+crypto ipsec transform-set DMVPN esp-3des esp-sha-hmac    
+ mode transport
+!
+crypto ipsec profile DMVPN
+ set transform-set DMVPN 
+
+
